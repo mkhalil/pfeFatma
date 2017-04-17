@@ -1,0 +1,36 @@
+
+
+{% block body %}
+    <h1>Jour</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ jour.id }}</td>
+            </tr>
+            <tr>
+                <th>Prgmatin</th>
+                <td>{{ jour.prgMatin }}</td>
+            </tr>
+            <tr>
+                <th>Progmedi</th>
+                <td>{{ jour.progMedi }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jour_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('jour_edit', { 'id': jour.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,232 @@
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <div class="row" >
+        <h4 class="modal-title pull-left " id="myModalLabel" style="margin-left: 20px">  Ajouter employée </h4>
+        <span id="bdg" class="badge bg-color-red bounceIn animated pull-left " style="padding:6px; display: none; margin-left: 15px;" ></span>
+
+    </div>
+</div>
+
+
+<div class="modal-body">
+
+    <div class="row">
+
+        {{ form_start(edit_form,{'attr':{'class':'smart-form','id':'smart-form-register','action':path('employee_edit',{'id':employee.id}),'method':'POST'|trans}})}}
+
+        <div class="panel-group smart-accordion-default" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading " style="background-color: #71843F">
+                    <h4 class="panel-title txt-color-white"><a data-toggle="collapse" data-parent="#accordion"
+                                                               href="#collapseOne">
+                            <i class="fa fa-lg fa-angle-down pull-right txt-color-white"></i>
+                            <i class="fa fa-lg fa-angle-up pull-right txt-color-white"></i>
+                            Collapsible Group Item #1 </a></h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body padding-7 ">
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">Nom</label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.nom,{ 'attr': {'type': 'text'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="" style="height: 200px; width: 200px; margin: 0 auto;">
+                                <div class="slim" data-label="Drop profile photo here"  data-ratio="1:1" style="border-radius: 50%;">
+                                    {% if employee.imageName %}
+                                        <img src="{{ asset('upload/images/'~employee.imageName) }}"/>
+                                    {% endif %}
+                                    <input type="file" name="imageFile" />
+                                </div>
+                            </section>
+
+
+                            <section class="col col-4">
+                                <label class="label">Prénom</label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.prenom,{ 'attr': {'type': 'text'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">Département
+                                    <a href="#" class="open ajouter"  data-toggle="modal"> <i class=" glyphicon glyphicon-plus-sign " style="color: #3cb131"></i></a>
+                                </label>
+                                <label class="select">
+                                    {{ form_widget ( edit_form.departement,{ 'attr': {'required':'required'|trans } } ) }}
+                                    <i></i>
+                                </label>
+                            </section>
+
+
+                            <section class="col col-4">
+                                <label class="label">Site
+                                    <a href="#mySiteModal{{ employee.id }}" class="open ajouter"  data-toggle="modal"> <i class=" glyphicon glyphicon-plus-sign " style="color: #3cb131"></i></a>
+
+                                </label>
+                                <label class="select">
+                                    {{ form_widget ( edit_form.site,{ 'attr': {'required':'required'|trans } } ) }}
+                                    <i></i>
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">sexe</label>
+                                <label class="select"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.sexe,{ 'attr': {'required':'required'|trans } } ) }}
+
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+
+                            </section>
+
+
+                            <section class="col col-4">
+                                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                    {{ form_widget ( edit_form.dateNaiss,{ 'attr': { 'class':'startdate'|trans}}) }}
+                                </label>
+                            </section>
+
+
+                            <section class="col col-4">
+                                <label class="label">fonction</label>
+                                <label class="select">
+                                    {{ form_widget ( edit_form.fonctions,{ 'attr': {'required':'required'|trans } } ) }}
+                                </label>
+                            </section>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">Email </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.emailEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                            <section class="col col-4">
+                                <label class="label">Email secondaire </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.emailSecondaireEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">matriculeEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.matriculeEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                            <section class="col col-4">
+                                <label class="label">Email gradeEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.gradeEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="label">rIBEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.rIBEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label">cINEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.cINEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label">Email numSecuriteSocialeEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.numSecuriteSocialeEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label"> adresseEmploye </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.adresseEmploye,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label"> numTelEmployee </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.numTelEmployee,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label"> competance </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.competance,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label"> diplome </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.diplome,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="label"> aptitudePhysique </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.aptitudePhysique,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+                            <section class="col col-4">
+                                <label class="label"> experience </label>
+                                <label class="input"> <i class="icon-append fa fa-tag"></i>
+                                    {{ form_widget ( edit_form.experience,{ 'attr': {'type': 'text','name':'username'|trans } } ) }}
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
+                            </section>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    {{ form_widget(edit_form._token) }}
+
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+        Annuler
+    </button>
+    <button type="submit" class="btn btn-primary">
+        Ajouter
+    </button>
+</div>
+
+{{ form_end(edit_form, {'render_rest': false}) }}
+
+
+
+
+
+

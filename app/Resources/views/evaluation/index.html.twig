@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Evaluations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Effectue</th>
+                <th>Afroid</th>
+                <th>Achaud</th>
+                <th>Reference</th>
+                <th>Dateprevue</th>
+                <th>Commantaire</th>
+                <th>Methodepedalogique</th>
+                <th>Conference</th>
+                <th>Supportdecours</th>
+                <th>Lieu</th>
+                <th>Duree</th>
+                <th>Recpecthumain</th>
+                <th>Contenuecours</th>
+                <th>Travauxpratique</th>
+                <th>Objectif</th>
+                <th>Annimateur</th>
+                <th>Ambiancegenerale</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evaluation in evaluations %}
+            <tr>
+                <td><a href="{{ path('evaluation_show', { 'id': evaluation.id }) }}">{{ evaluation.id }}</a></td>
+                <td>{{ evaluation.matricule }}</td>
+                <td>{{ evaluation.effectue }}</td>
+                <td>{{ evaluation.afroid }}</td>
+                <td>{{ evaluation.achaud }}</td>
+                <td>{% if evaluation.reference %}Yes{% else %}No{% endif %}</td>
+                <td>{% if evaluation.datePrevue %}Yes{% else %}No{% endif %}</td>
+                <td>{{ evaluation.commantaire }}</td>
+                <td>{{ evaluation.methodePedalogique }}</td>
+                <td>{{ evaluation.conference }}</td>
+                <td>{{ evaluation.supportDeCours }}</td>
+                <td>{{ evaluation.lieu }}</td>
+                <td>{{ evaluation.duree }}</td>
+                <td>{{ evaluation.recpectHumain }}</td>
+                <td>{{ evaluation.contenueCours }}</td>
+                <td>{{ evaluation.travauxPratique }}</td>
+                <td>{{ evaluation.objectif }}</td>
+                <td>{{ evaluation.annimateur }}</td>
+                <td>{{ evaluation.ambianceGenerale }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('evaluation_show', { 'id': evaluation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('evaluation_edit', { 'id': evaluation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('evaluation_new') }}">Create a new evaluation</a>
+        </li>
+    </ul>
+{% endblock %}

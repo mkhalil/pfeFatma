@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Site</h4>
+</div>
+<div class="modal-body">
+    {{ form_start(form,{'attr':{'class':'smart-form','id':'smart-form-register','action':path('fonction_new'),'method':'POST'|trans}})}}
+    <section>
+        <label class="label">LibelleFonction</label>
+        <label class="input">
+            <i class="icon-append fa fa-tag"></i>
+            {{ form_widget(form.libelleFonction,{'attr': {'type':'text','name':'fonction','placeholder':'Fonction'|trans}}) }}
+            {{ form_errors(form.libelleFonction)}}
+        </label>
+
+        <label for="chkPassport">
+            <input type="checkbox" id="chkPassport" />
+            Do you have Passport?
+        </label>
+        <hr />
+        <div id="dvPassport" style="display: none">
+            Passport Number:
+            <input type="text" id="txtPassportNumber" />
+        </div>
+    </section>
+
+</div>
+<div class="modal-footer">
+    {{ form_widget(form._token) }}
+    <footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+            Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+
+
+    </footer>
+    {{ form_end(form,{'render_rest':false}) }}
+</div>
+

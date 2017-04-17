@@ -1,0 +1,43 @@
+
+
+{% block body %}
+    <h1>Formateurs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Cv</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formateur in formateurs %}
+            <tr>
+                <td><a href="{{ path('formateur_show', { 'id': formateur.id }) }}">{{ formateur.id }}</a></td>
+                <td>{{ formateur.nom }}</td>
+                <td>{{ formateur.prenom }}</td>
+                <td>{{ formateur.cv }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('formateur_show', { 'id': formateur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('formateur_edit', { 'id': formateur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formateur_new') }}">Create a new formateur</a>
+        </li>
+    </ul>
+{% endblock %}

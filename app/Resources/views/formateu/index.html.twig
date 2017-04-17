@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formateus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formateu in formateus %}
+            <tr>
+                <td><a href="{{ path('formateu_show', { 'id': formateu.id }) }}">{{ formateu.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('formateu_show', { 'id': formateu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('formateu_edit', { 'id': formateu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formateu_new') }}">Create a new formateu</a>
+        </li>
+    </ul>
+{% endblock %}
